@@ -47,7 +47,7 @@ build/
 # Environment — NEVER commit secrets
 .env
 .env.local
-.env.production
+
 
 # IDE
 .vscode/
