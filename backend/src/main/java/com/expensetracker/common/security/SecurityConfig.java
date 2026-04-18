@@ -37,6 +37,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/auth/**",
+                                "/health",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
                                 "/api-docs/**",
@@ -53,13 +54,14 @@ public class SecurityConfig {
         return http.build();
     }
 
+    // common/security/SecurityConfig.java
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
         config.setAllowedOrigins(List.of(
-                "http://localhost:5173",
-                "https://expense-tracker-app-chi-eight.vercel.app"  // ← Add this
+                "http://localhost:5173",                                    // local dev
+                "https://expense-tracker-app-chi-eight.vercel.app"         // ✅ Vercel prod
         ));
 
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
@@ -70,6 +72,7 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", config);
         return source;
     }
+
 
 
 
