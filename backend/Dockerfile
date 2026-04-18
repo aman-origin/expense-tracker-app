@@ -24,7 +24,7 @@ FROM eclipse-temurin:17-jre
 WORKDIR /app
 
 # Copy the built jar file from Stage 1
-COPY --from=build /app/target/job-tracker-backend-1.0.0.jar app.jar
+COPY --from=build /app/target/backend-1.0.0.jar app.jar
 
 # Tell Render which port your app uses
 EXPOSE 8080
