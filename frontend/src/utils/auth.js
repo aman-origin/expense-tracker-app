@@ -1,0 +1,25 @@
+export const saveAuth = (data) => {
+  localStorage.setItem("token", data.token);
+  localStorage.setItem(
+    "user",
+    JSON.stringify({
+      id: data.userId,
+      name: data.name,
+      email: data.email,
+    })
+  );
+};
+
+export const getUser = () => {
+  const user = localStorage.getItem("user");
+  return user ? JSON.parse(user) : null;
+};
+
+export const getToken = () => localStorage.getItem("token");
+
+export const isAuthenticated = () => !!getToken();
+
+export const logout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+};
